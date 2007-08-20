@@ -6,7 +6,7 @@ use strict;
 use Encode::Guess;
 our @ISA    = qw(Exporter);
 our @EXPORT = qw(segment);
-our $VERSION	= '0.01';
+our $VERSION	= '0.02';
 
 =head1 NAME
 
@@ -37,7 +37,7 @@ Currently, only C<segment> is available.
 
 sub segment { 
     my $word = shift;
-    my $decoder = guess_encoding ($word, qw/ utf-8 big5 /);
+    my $decoder = guess_encoding ($word, qw/ utf8 big5 /);
     $word = $decoder->decode($word);
     my @segs = split /([A-z|\d]+|\S)/, $word;
     $word = join " ",@segs;
